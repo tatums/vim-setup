@@ -1,7 +1,31 @@
 set nocompatible               " be iMproved
-"filetype off                   " required!
-filetype indent on
+filetype off                   " required!
+syntax on
 
+"Show line numbers
+set number
+
+" show the bottom status bar
+set laststatus=2
+" Let backspace work like a normal editor
+set backspace=2
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+" dont bother with the .swp files
+set noswapfile
+
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set hidden
+set history=100
+set nowrap
+set smartindent
+set autoindent
+
+
+" Plugins
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -13,36 +37,26 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'ervandew/supertab'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'scrooloose/nerdtree'
+Bundle 'tpope/vim-surround'
 call vundle#end()
 
-"colorscheme jellybeans+
+
 colorscheme jelleybeans
 
-syntax on
-set number
+"map leader to space
 let mapleader=" "
-set t_Co=256
-set tabstop=2 shiftwidth=2 expandtab
 
-set laststatus=2
-set backspace=2
-
+" navigate windows easily
 nnoremap <Leader>j <C-w>j
 nnoremap <Leader>k <C-w>k
 nnoremap <Leader>h <C-w>h
 nnoremap <Leader>l <C-w>l
 
-set noswapfile
-
+" reload vim config
 map <leader>s :source ~/.vimrc<CR>
+" Nerdtree
+map <Leader>n :NERDTreeToggle<CR>
 
-set hidden
-set history=100
-set nowrap
-set tabstop=2
-set shiftwidth=2
-set expandtab
-set smartindent
-set autoindent
-
-autocmd BufWritePre * StripWhitespace "Strip whitespace on save
+" Strip whitespace on save
+autocmd BufWritePre * StripWhitespace
