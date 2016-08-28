@@ -1,3 +1,12 @@
+"
+"   ██╗   ██╗ ██╗ ███╗   ███╗ ██████╗   ██████╗
+"   ██║   ██║ ██║ ████╗ ████║ ██╔══██╗ ██╔════╝
+"   ██║   ██║ ██║ ██╔████╔██║ ██████╔╝ ██║
+"   ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║ ██╔══██╗ ██║
+" ██╗╚████╔╝  ██║ ██║ ╚═╝ ██║ ██║  ██║ ╚██████╗
+" ╚═╝ ╚═══╝   ╚═╝ ╚═╝     ╚═╝ ╚═╝  ╚═╝  ╚═════╝
+"
+
 set nocompatible               " be iMproved
 filetype off                   " required!
 syntax on
@@ -24,6 +33,8 @@ set nowrap
 set smartindent
 set autoindent
 
+" Needed for indention in nodejs and js
+filetype indent on
 
 " Plugins
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -39,8 +50,12 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'scrooloose/nerdtree'
 Bundle 'tpope/vim-surround'
+Plugin 'vim-scripts/nginx.vim'
+Plugin 'pangloss/vim-javascript'
 call vundle#end()
 
+au BufRead,BufNewFile *.nginx set ft=nginx
+au BufRead,BufNewFile *.conf set ft=nginx
 
 colorscheme jelleybeans
 
