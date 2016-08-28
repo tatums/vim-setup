@@ -2,11 +2,11 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-files="vimrc"
+echo "----Creating symlink to vimrc in home directory."
+ln -sf $DIR/vimrc $HOME/.vimrc
 
-for file in $files; do
-    echo "----Creating symlink to $file in home directory."
-    ln -sf $DIR/$file ~/.$file
-done
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+if [ ! -d $HOME/.vim/bundle/Vundle.vim ]; then
+  git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+fi
+
 vim +PluginInstall +qall
