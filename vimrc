@@ -52,6 +52,7 @@ Plugin 'scrooloose/nerdtree'
 Bundle 'tpope/vim-surround'
 Plugin 'vim-scripts/nginx.vim'
 Plugin 'pangloss/vim-javascript'
+Plugin 'tpope/vim-fireplace.git'
 call vundle#end()
 
 au BufRead,BufNewFile *.nginx set ft=nginx
