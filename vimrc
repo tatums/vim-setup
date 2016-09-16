@@ -52,7 +52,9 @@ Plugin 'scrooloose/nerdtree'
 Bundle 'tpope/vim-surround'
 Plugin 'vim-scripts/nginx.vim'
 Plugin 'pangloss/vim-javascript'
-Plugin 'tpope/vim-fireplace.git'
+Plugin 'guns/vim-sexp'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 call vundle#end()
 
 au BufRead,BufNewFile *.nginx set ft=nginx
@@ -68,6 +70,9 @@ nnoremap <Leader>j <C-w>j
 nnoremap <Leader>k <C-w>k
 nnoremap <Leader>h <C-w>h
 nnoremap <Leader>l <C-w>l
+
+
+nnoremap <Leader>json :%!python -m json.tool<CR>
 
 " reload vim config
 map <leader>s :source ~/.vimrc<CR>
