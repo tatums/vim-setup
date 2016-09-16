@@ -42,7 +42,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'wincent/command-t'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'ervandew/supertab'
