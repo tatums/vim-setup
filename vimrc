@@ -54,6 +54,13 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'guns/vim-sexp'
 Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+" Snipmate
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+" END Snipmate
+Plugin 'easymotion/vim-easymotion'
 call vundle#end()
 
 au BufRead,BufNewFile *.nginx set ft=nginx
@@ -76,7 +83,10 @@ nnoremap <Leader>json :%!python -m json.tool<CR>
 " reload vim config
 map <leader>s :source ~/.vimrc<CR>
 " Nerdtree
-map <Leader>n :NERDTreeToggle<CR>
+map <Leader>n :NERDTreeFind<CR>
 
 " Strip whitespace on save
 autocmd BufWritePre * StripWhitespace
+
+" ignore pattern for ctrlp
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
