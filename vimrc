@@ -52,6 +52,7 @@ Bundle 'tpope/vim-surround'
 Plugin 'vim-scripts/nginx.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'guns/vim-sexp'
+Plugin 'guns/vim-clojure-static'
 Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 " Snipmate
@@ -87,6 +88,31 @@ map <Leader>n :NERDTreeFind<CR>
 
 " Strip whitespace on save
 autocmd BufWritePre * StripWhitespace
+
+
+" clojure indenting
+autocmd FileType clojure set lispwords+=describe,describe-server,it,
+      \before-all,after-all,before,after,init-state,render,render-state,
+      \will-mount,did-mount,should-update,will-receive-props,will-update,
+      \did-update,display-name,will-unmount,describe-with-db,
+      \describe-with-server,swaggered,describe-with-db,describe-with-es,
+      \context,context*,GET*,POST*,PUT*,DELETE*,poll-es-until-timeout,
+      \around,defstate,if-let,ns,doseq,testing
+let g:clojure_align_multiline_strings = 1
+let g:clojure_align_subforms = 1
+
+" associate *.foo with php filetype
+au BufRead,BufNewFile *.boot setfiletype clojure
+
+
+function! ConnectToNREPL(...)
+  let s:context_path = a:0 > 1 ? a:2 : "."
+  let s:port = a:0 > 0 ? a:1 : system("cat " . s:context_path . "/" . ".nrepl-port")
+  let s:replpath = "nrepl://localhost:" . s:port . " " . s:context_path
+  execute "Connect " . s:replpath . " " . s:context_path
+endfunction
+command! -nargs=* REPL call ConnectToNREPL(<f-args>)
+
 
 " ignore pattern for ctrlp
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
