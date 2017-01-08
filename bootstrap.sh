@@ -2,11 +2,24 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-echo "----Creating symlink to vimrc in home directory."
-ln -sf $DIR/vimrc $HOME/.vimrc
+DEFAULT='\e[0m' # No Color
+RED='\e[31m'
 
-if [ ! -d $HOME/.vim/bundle/Vundle.vim ]; then
-  git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
-fi
+function say {
+  printf "\n${RED} $@ ${DEFAULT}\n"
+}
 
-vim +PluginInstall +qall
+function InstallVundle () {
+  if [ ! -d $HOME/.vim/bundle/Vundle.vim ]; then
+    git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+  fi
+  vim +PluginInstall +qall
+}
+
+function SymlinkVimRc () {
+  ln -sf $DIR/vimrc $HOME/.vimrc && \
+  say "Symlink $HOME/.vimrc created"
+}
+
+InstallVundle && \
+  SymlinkVimRc
